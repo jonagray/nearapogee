@@ -1,5 +1,7 @@
 import React, {Fragment, useEffect, useState} from 'react';
 
+import EditUser from "./EditUser";
+
 const ListUsers = () => {
 
   const [users, setUsers] = useState([]);
@@ -57,7 +59,9 @@ const ListUsers = () => {
           <td>{users.name}</td>
           <td>{users.email}</td>
           <td>{users.address}</td>
-          <td>Edit</td>
+          <td>
+            <EditUser users={users} />
+          </td>
           <td>
             <button 
               className="btn btn-danger"
