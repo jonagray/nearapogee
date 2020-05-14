@@ -4,6 +4,20 @@ const ListUsers = () => {
 
   const [users, setUsers] = useState([]);
 
+  // Delete User Function
+
+  const deleteUser = async (id) => {
+    try {
+      const deleteUser = await fetch(`http://localhost:5000/users/${id}`, {
+        method: "DELETE"
+      });
+      
+      setUsers(users.filter(users => users.user_id !== id));
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
+
   const getUsers = async () => {
     try {
       const response = await fetch("http://localhost:5000/users")
@@ -39,12 +53,15 @@ const ListUsers = () => {
         <td>john@example.com</td>
       </tr> */}
       {users.map(users => (
-        <tr>
+        <tr key={users.user_id}>
           <td>{users.name}</td>
           <td>{users.email}</td>
           <td>{users.address}</td>
           <td>Edit</td>
-          <td>Delete</td>
+          <td>
+            <button 
+              className="btn btn-danger"
+              onClick={() => deleteUser(users.user_id)}>Delete</button></td>
         </tr>
       ))}
     </tbody>
