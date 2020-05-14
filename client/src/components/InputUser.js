@@ -16,7 +16,8 @@ const InputUser = () => {
         body: JSON.stringify(body)
       });
 
-      console.log(response);
+      // The line below refreshes the page, but for some reason is causing it to not be saved to the database
+      // window.location = "/";
     } catch (error) {
       console.error(error.message);
     }
