@@ -14,6 +14,10 @@ const EditUser = ({ users }) => {
     setEmail(e.target.value);
   }
 
+  const formAddressUpdater = (e) => {
+    setAddress(e.target.value);
+  }
+
   const updateAll = async (e) => {
     e.preventDefault();
 
@@ -68,7 +72,7 @@ const EditUser = ({ users }) => {
             </div>
 
             <div className="modal-body">
-              <input type="text" className="form-control" value={address} onChange={e => setAddress(e.target.value)} />
+              <input type="text" className="form-control" value={address} onChange={formAddressUpdater} />
             </div>
 
             <div className="modal-footer">
